@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Find current weather and a five-day forecast for your city.">
+  <meta name="theme-color" content="#102b32">
+  <title>Skyline | Live Weather</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="weather.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="shell topbar-inner">
+      <a class="brand" href="#main">
+        <span class="brand-icon" aria-hidden="true"></span>
+        Skyline
+      </a>
+      <span class="topbar-label">Live weather</span>
+    </div>
+  </header>
+
+  <main id="main" class="shell">
+    <section class="search-section" aria-labelledby="page-title">
+      <h1 id="page-title">Weather by city</h1>
+      <p class="intro">Check current conditions and the five-day forecast.</p>
+      <form id="search-form" role="search" aria-label="City weather" novalidate>
+        <label class="sr-only" for="city">City name</label>
+        <div class="search-field">
+          <span class="search-icon" aria-hidden="true"></span>
+          <input id="city" name="city" type="search" placeholder="Enter a city" autocomplete="off" maxlength="100" aria-describedby="search-status">
+        </div>
+        <button id="search-button" class="search-button" type="submit">Search</button>
+      </form>
+      <div class="quick-cities" role="group" aria-label="Suggested cities">
+        <span>Try</span>
+        <button type="button" data-city="Pune">Pune</button>
+        <button type="button" data-city="Delhi">Delhi</button>
+        <button type="button" data-city="Bengaluru">Bengaluru</button>
+      </div>
+      <p id="search-status" class="search-status" hidden></p>
+      <p id="announcement" class="sr-only" role="status" aria-atomic="true"></p>
+    </section>
+
+    <section id="empty-state" class="empty-panel" aria-labelledby="empty-title">
+      <div class="empty-art" aria-hidden="true">
+        <span class="weather-icon partly"><i></i><b></b></span>
+      </div>
+      <div>
+        <h2 id="empty-title">Find a local forecast</h2>
+        <p>Search by city name. For cities with the same name, try adding the country, as in Paris, France.</p>
+      </div>
+    </section>
+
+    <div id="weather-results" hidden>
+      <section aria-label="Current weather">
+        <article id="current-card" class="current-card"></article>
+      </section>
+      <section class="forecast-section" aria-labelledby="forecast-title">
+        <div class="forecast-heading">
+          <h2 id="forecast-title">5-day forecast</h2>
+          <p>Daily highs and lows</p>
+        </div>
+        <ul id="forecast-list" class="forecast-grid"></ul>
+      </section>
+    </div>
+    <noscript><p class="search-status">Enable JavaScript to search for weather.</p></noscript>
+  </main>
+
+  <footer class="shell footer">
+    <p>Weather data by <a href="https://open-meteo.com/">Open-Meteo</a></p>
+  </footer>
+</body>
+</html>
